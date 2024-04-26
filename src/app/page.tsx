@@ -2,19 +2,25 @@
 import { useQuery } from "react-query";
 import { getProducts } from "../api/api";
 import { useActions } from "../hooks/action";
+import { useAppSelector } from "../hooks/redux";
+import { CardProduct } from "../components/CardProduct/CardProduct";
 
 export default function Home() {
-  const {data, isLoading, error, isSuccess} = useQuery({
+  const {setProducts} = useActions()
+  const {isLoading, error, isSuccess} = useQuery({
     queryFn: () => getProducts(),
     queryKey: ["products"],
+    onSuccess(data) {
+      setProducts(data)
+    },
   })
-console.log(data)
-  const {setProducts} = useActions()
-  setProducts(data)
-
+  const products = useAppSelector((state) => state.products.products)
+  console.log(products)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Click Head Test</h1>
+      {products.map((product) => (
+        <CardProduct key={product.id} {...product}/>
+      ))}
     </main>
   );
 }
