@@ -4,21 +4,21 @@ import Image from 'next/image'
 
 export const Header: React.FC = () => {
   return (
-    <header className='flex justify-between items-center p-4 w-full h-200'>
-      <Link href={'/'} className='cursor:pointer'>
-        <Image src='/logo.png' width={200} height={31} alt='logo' />
+    <header className='flex justify-between items-center p-4'>
+      <Link href={'/'} className='cursor:pointer w-48'>
+        <Image src='/logo.png' priority={true} width={0} height={0} sizes='100vw' className='w-full' alt='logo' />
       </Link>
-      <div className='flex space-x-4'>
+      <nav className='flex space-x-4'>
         <Link href={'/basket'} className='space-x-0 text-center hover:opacity-70 color-hover-text'>
-          Корзина
+          Cart
         </Link>
         <Link href={'/'} className='space-x-0 text-center hover:opacity-70 color-hover-text'>
-          Мой аккаунт
+          Account
         </Link>
         <Link href={'/'} className='space-x-0 text-center hover:opacity-70 color-hover-text'>
-          Выйти
+          Exit
         </Link>
-      </div>
+      </nav>
     </header>
   )
 }

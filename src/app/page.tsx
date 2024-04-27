@@ -4,6 +4,7 @@ import { getProducts } from "../api/api";
 import { useActions } from "../hooks/action";
 import { useAppSelector } from "../hooks/redux";
 import { CardProduct } from "../components/CardProduct/CardProduct";
+import Loader from "../ui/loader/loader";
 
 export default function Home() {
   const {setProducts} = useActions()
@@ -18,9 +19,9 @@ export default function Home() {
   console.log(products)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {products.map((product) => (
+      {isLoading ? <Loader /> : (products.map((product) => (
         <CardProduct key={product.id} {...product}/>
-      ))}
+      )))}
     </main>
   );
 }
