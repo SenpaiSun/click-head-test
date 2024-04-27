@@ -15,4 +15,5 @@ export interface Product {
 
 export interface ProductsState {
   products: Product[];
+  countToCart: number
 }

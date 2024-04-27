@@ -3,7 +3,8 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { Product, ProductsState } from "./types";
 
 const initialState: ProductsState = {
-  products: []
+  products: [],
+  countToCart: 0
 }
 
 export const productsSlice = createSlice({
@@ -12,6 +13,9 @@ export const productsSlice = createSlice({
   reducers: {
     setProducts: (state, action: PayloadAction<any>) => {
       state.products = action.payload
+    },
+    setCountToCart: (state, action: PayloadAction<number>) => {
+      state.countToCart = action.payload
     }
   }
 })
