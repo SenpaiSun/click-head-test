@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 export const NavigationHeader: React.FC = () => {
-  const countToCartProducts = JSON.parse(localStorage.getItem('cart') || '[]').length
+  const countToCartProducts = useAppSelector((state) => state.products.countToCart)
   return (
     <nav className='flex space-x-4 w-max'>
         <Link href={'/basket'} className='flex flex-row gap-1 space-x-0 text-center hover:opacity-70 color-hover-text'>

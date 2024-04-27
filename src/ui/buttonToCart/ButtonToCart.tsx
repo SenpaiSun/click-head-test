@@ -2,7 +2,7 @@
 import { useActions } from '@/src/hooks/action'
 import React, { useEffect } from 'react'
 
-interface ButtonToCartProps {
+export interface ButtonToCartProps {
   id: number
   title: string
   price: number

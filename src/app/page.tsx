@@ -18,7 +18,7 @@ export default function Home() {
   const products = useAppSelector((state) => state.products.products)
   console.log(products)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-200">
       {isLoading ? <Loader /> : (products.map((product) => (
         <CardProduct key={product.id} {...product}/>
       )))}

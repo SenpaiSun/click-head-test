@@ -1,21 +1,28 @@
 'use client'
+import { useActions } from '@/src/hooks/action'
+import { useAppSelector } from '@/src/hooks/redux'
 import { CartInfoProduct } from '@/src/ui/cartInfoProduct/CartInfoProduct'
-import React from 'react'
+import React, { useEffect } from 'react'
 
-interface CardProductProps {
+export interface CardProductProps {
   id: number
   title: string
   price: number
 }
 
 export const CartItem: React.FC = () => {
-  const dataProducts = JSON.parse(localStorage.getItem('cart') || '[]')
-  console.log(dataProducts)
+  const {setProductsCart} = useActions()
+  const dataCart = useAppSelector((state) => state.products)
+
+  useEffect(() => {
+    setProductsCart(JSON.parse(localStorage.getItem('cart') || '[]'))
+  }, [])
+
   return (
-    <div className='flex flex-col border border-slate-600 rounded-2xl p-4 w-3/5'>
-      {dataProducts.map((product: CardProductProps, index: number) => (
+    <div className='flex h-auto flex-col border border-slate-600 rounded-2xl p-4 w-3/5'>
+      {dataCart.productsCart.length ? dataCart.productsCart.map((product: CardProductProps, index: number) => (
         <CartInfoProduct key={index} id={product.id} title={product.title} price={product.price} />
-      ))}
+      )) : <div className='text-center text-black m-auto text-3xl font-bold'>Cart is empty</div>}
     </div>
   )
 }

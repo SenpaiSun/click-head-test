@@ -18,7 +18,7 @@ interface CardProductProps {
 export const CardProduct: React.FC = (props) => {
   const { title, price, description, image, rating, id } = props as CardProductProps
   return (
-    <div className='flex justify-between space-x-4 border border-slate-600 bg-white rounded-2xl gap-4 mb-6 p-4 w-full max-w-7xl flex-row text-black'>
+    <div className='flex justify-between space-x-4 border border-slate-600 bg-white rounded-2xl gap-4 mb-6 p-4 w-full max-w-7xl flex-row text-black bg-gray-100'>
       <div className='size-32 min-w-32 flex justify-center items-center relative overflow-hidden'>
         <Image width={55} height={140} src={image ? image : card} alt='' className='w-auto'></Image>
       </div>
