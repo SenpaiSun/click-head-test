@@ -7,7 +7,6 @@ const Breadcrumbs: React.FC = () => {
   const currentPath = usePathname()
   const [location, setLocation] = React.useState<string>(currentPath)
 
-
   useEffect(() => {
     setLocation(currentPath)
   }, [currentPath])
@@ -18,15 +17,15 @@ const Breadcrumbs: React.FC = () => {
         CART
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/payment'} className={location === '/cart/payment' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
-        PAYMENT METHOD
+      <Link href={'/cart/delivery'} className={location === '/cart/delivery' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+        DELIVERY ADDRESS
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/payment/pay'} className={location === '/cart/payment/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <Link href={'/cart/delivery/pay'} className={location === '/cart/delivery/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         PAY
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/payment/order-info'} className={location === '/cart/payment/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <Link href={'/cart/delivery/order-info'} className={location === '/cart/delivery/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         ORDER INFORMATION
       </Link>
     </div>

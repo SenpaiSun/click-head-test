@@ -1,12 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from '@reduxjs/toolkit';
-import { productsActions } from '../store/propucts.slice';
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from '@reduxjs/toolkit'
+import { productsActions } from '../store/products.slice'
+import { userActions } from '../store/user.slice'
 
 const actions = {
-  ...productsActions
+  ...productsActions,
+  ...userActions
 }
 
 export const useActions = () => {
-  const dispatch = useDispatch();
-  return bindActionCreators(actions, dispatch);
-};
+  const dispatch = useDispatch()
+  return bindActionCreators(actions, dispatch)
+}

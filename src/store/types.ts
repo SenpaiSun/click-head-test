@@ -19,3 +19,10 @@ export interface ProductsState {
   totalPriceCart: number
   countToCart: number
 }
+
+export interface User {
+  firstName: string
+  lastName: string
+  address: string
+  phone: string
+}

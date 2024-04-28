@@ -10,15 +10,15 @@ export const ButtonNextStage = () => {
     console.log(location)
     switch (location) {
       case '/cart/products':
-        router.push('/cart/payment');
+        router.push('/cart/delivery');
         break;
-      case '/cart/payment':
-        router.push('/cart/payment/pay');
+      case '/cart/delivery':
+        router.push('/cart/delivery/pay');
         break;
-      case '/cart/payment/pay':
-        router.push('/cart/payment/order-info');
+      case '/cart/delivery/pay':
+        router.push('/cart/delivery/order-info');
         break;
-      case '/cart/payment/order-info':
+      case '/cart/delivery/order-info':
         router.push('/');
         break;
     }
@@ -28,11 +28,11 @@ export const ButtonNextStage = () => {
     switch (location) {
       case '/cart/products':
         return 'NEXT ➤';
-      case '/cart/payment':
+      case '/cart/delivery':
         return 'NEXT ➤';
-      case '/cart/payment/pay':
+      case '/cart/delivery/pay':
         return 'PAY';
-      case '/cart/payment/order-info':
+      case '/cart/delivery/order-info':
         return 'To main page';
     }
   }
