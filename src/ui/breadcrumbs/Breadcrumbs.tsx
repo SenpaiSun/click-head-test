@@ -21,11 +21,11 @@ const Breadcrumbs: React.FC = () => {
         DELIVERY ADDRESS
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/delivery/pay'} className={location === '/cart/delivery/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <Link href={'/cart/pay'} className={location === '/cart/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         PAY
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/delivery/order-info'} className={location === '/cart/delivery/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <Link href={'/cart/order-info'} className={location === '/cart/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         ORDER INFORMATION
       </Link>
     </div>

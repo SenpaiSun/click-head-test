@@ -13,10 +13,10 @@ export const ButtonNextStage = () => {
         router.push('/cart/delivery');
         break;
       case '/cart/delivery':
-        router.push('/cart/delivery/pay');
+        router.push('/cart/pay');
         break;
       case '/cart/delivery/pay':
-        router.push('/cart/delivery/order-info');
+        router.push('/cart/order-info');
         break;
       case '/cart/delivery/order-info':
         router.push('/');
@@ -30,9 +30,9 @@ export const ButtonNextStage = () => {
         return 'NEXT ➤';
       case '/cart/delivery':
         return 'NEXT ➤';
-      case '/cart/delivery/pay':
+      case '/cart/pay':
         return 'PAY';
-      case '/cart/delivery/order-info':
+      case '/cart/order-info':
         return 'To main page';
     }
   }

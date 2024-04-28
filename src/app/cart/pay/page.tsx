@@ -7,10 +7,10 @@ const metadata: Metadata = {
   description: 'Deluvery address page',
 }
 
-export default function DeliveryInfo() {
+export default function Pay() {
   return (
     <div className='flex flex-row justify-between w-full min-h-52'>
-      <Delivery />
+      
     </div>
   )
 }
