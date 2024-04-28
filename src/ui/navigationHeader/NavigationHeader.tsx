@@ -8,7 +8,7 @@ export const NavigationHeader: React.FC = () => {
   const { setCountToCart, setUsd, setCoins } = useActions()
 
   useEffect(() => {
-    if(localStorage.getItem('balance')){
+    if(!localStorage.getItem('balance')){
       localStorage.setItem('balance', '{"usd": 1000, "coins": 1000}')
     }
     const usd = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]').usd : 0

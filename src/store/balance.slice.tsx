@@ -4,7 +4,8 @@ import { Balance } from "./types";
 
 const initialState: Balance = {
   usd: 0,
-  coins: 0
+  coins: 0,
+  method: 'USD'
 }
 
 export const balanceSlice = createSlice({
@@ -16,6 +17,9 @@ export const balanceSlice = createSlice({
     },
     setCoins: (state, action: PayloadAction<number>) => {
       state.coins = action.payload
+    },
+    setMethod: (state, action: PayloadAction<'USD' | 'Coins'>) => {
+      state.method = action.payload
     }
   }
 })

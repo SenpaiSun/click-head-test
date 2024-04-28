@@ -30,4 +30,5 @@ export interface User {
 export interface Balance {
   usd: number
   coins: number
+  method: 'USD' | 'Coins'
 }

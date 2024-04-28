@@ -50,8 +50,8 @@ export const InputDelivery = ({name}: {name: string}) => {
 
   return (
     <div className='flex flex-row justify-between gap-1'>
-      <label className='w-max min-w-24'>{name}:</label>
-      <input value={value()} onChange={onChangeValue} inputMode={name === 'Phone' ? 'numeric' : 'text'} className='border border-slate-400 rounded w-full pl-1 pr-1 focus:outline-none' required></input>
+      <label htmlFor={name} className='w-max min-w-24 m-auto h-max text-sm font-medium text-gray-900'>{name}:</label>
+      <input name={name} id={name} value={value()} onChange={onChangeValue} inputMode={name === 'Phone' ? 'numeric' : 'text'} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 pl-2 pr-2 focus:outline-none" required placeholder={name}></input>
     </div>
   )
 }
