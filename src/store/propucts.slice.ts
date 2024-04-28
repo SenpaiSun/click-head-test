@@ -5,7 +5,7 @@ import { Product, ProductsState } from "./types";
 const initialState: ProductsState = {
   products: [],
   productsCart: [],
-  totalPriceCart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').reduce((acc: number, item: Product) => acc + item.price, 0) : 0,
+  totalPriceCart: 0,
   countToCart: 0
 }
 
@@ -22,6 +22,9 @@ export const productsSlice = createSlice({
     setProductsCart: (state, action: PayloadAction<Product[]>) => {
       state.productsCart = action.payload
       state.totalPriceCart = state.productsCart.reduce((acc: number, item: Product) => acc + item.price, 0)
+    },
+    setTotalPriceCart: (state, action: PayloadAction<number>) => {
+      state.totalPriceCart = action.payload
     }
   }
 })

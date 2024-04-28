@@ -1,9 +1,15 @@
 'use client'
+import { useActions } from '@/src/hooks/action'
 import { useAppSelector } from '@/src/hooks/redux'
 import Link from 'next/link'
-import React from 'react'
+import React, { useActionState, useEffect } from 'react'
 
 export const NavigationHeader: React.FC = () => {
+  const { setCountToCart } = useActions()
+  useEffect(() => {
+    const countProducts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').length : 0
+    setCountToCart(countProducts)
+  })
   const countToCartProducts = useAppSelector((state) => state.products.countToCart)
   return (
     <nav className='flex space-x-4 w-max'>
