@@ -1,28 +1,32 @@
 'use client'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const Breadcrumbs: React.FC = () => {
-  const [location, setLocation] = React.useState<string>(window.location.pathname)
+  const currentPath = usePathname()
+  const [location, setLocation] = React.useState<string>(currentPath)
+
+
   useEffect(() => {
-    setLocation(window.location.pathname)
-  }, [])
-  console.log(location)
+    setLocation(currentPath)
+  }, [currentPath])
+
   return (
     <div className='flex flex-row border-b'>
-      <Link href={'/basket'} className={location === '/basket' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
-       CART
+      <Link href={'/cart/products'} className={location === '/cart/products' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+        CART
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/basket/payment'} className={location === '/basket/payment' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <Link href={'/cart/payment'} className={location === '/cart/payment' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         PAYMENT METHOD
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/basket/payment/pay'} className={location === '/basket/payment/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <Link href={'/cart/payment/pay'} className={location === '/cart/payment/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         PAY
       </Link>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/basket/payment/order-info'} className={location === '/basket/payment/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <Link href={'/cart/payment/order-info'} className={location === '/cart/payment/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         ORDER INFORMATION
       </Link>
     </div>

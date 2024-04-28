@@ -5,7 +5,7 @@ import { Product, ProductsState } from "./types";
 const initialState: ProductsState = {
   products: [],
   productsCart: [],
-  totalPriceCart: 0,
+  totalPriceCart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').reduce((acc: number, item: Product) => acc + item.price, 0) : 0,
   countToCart: 0
 }
 

@@ -1,8 +1,9 @@
 'use client'
 import { useAppSelector } from '@/src/hooks/redux'
 import React from 'react'
+import {ButtonNextStage} from '../../ui/buttonNextStage/ButtonNextStage'
 
-export const TotalCartInfo: React.FC = () => {
+export const TotalCartInfo = () => {
   const totalPrice = useAppSelector((state) => state.products.totalPriceCart)
   return (
     <div className='flex flex-col justify-between min-h-96'>
@@ -10,7 +11,7 @@ export const TotalCartInfo: React.FC = () => {
         <p className='text-end text-4xl font-bold text-green-400'>Total: </p>
         <p className='text-end text-4xl font-bold text-green-400'>{totalPrice.toFixed(2)} $</p>
       </div>
-      <button className='border rounded border-green-700 w-52 h-16 bg-green-500 hover:bg-green-600 text-white text-2xl'>Next</button>
+      <ButtonNextStage />
     </div>
   )
 }

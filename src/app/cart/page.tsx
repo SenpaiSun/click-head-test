@@ -9,14 +9,13 @@ const metadata: Metadata = {
   description: 'Cart page',
 }
 
-export default function Basket() {
+export default function Cart({children}: {children: React.ReactNode}) {
   return (
     <div className='min-h-screen bg-white p-4 text-black bg-gray-200'>
       <div className='w-full border border-slate-600 rounded-2xl p-4 max-w-7xl mx-auto bg-gray-100'>
         <Breadcrumbs />
-        <h1 className='text-start text-3xl font-bold m-4'>Products:</h1>
         <div className='flex flex-row justify-between '>
-          <CartItem />
+          {children}
           <TotalCartInfo />
         </div>
       </div>
