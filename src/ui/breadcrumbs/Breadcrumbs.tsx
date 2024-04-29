@@ -1,10 +1,10 @@
 'use client'
-import Link from 'next/link'
 import React, { useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const Breadcrumbs: React.FC = () => {
   const currentPath = usePathname()
+  const router = useRouter()
   const [location, setLocation] = React.useState<string>(currentPath)
 
   useEffect(() => {
@@ -13,21 +13,22 @@ const Breadcrumbs: React.FC = () => {
 
   return (
     <div className='flex flex-row border-b'>
-      <Link href={'/cart/products'} className={location === '/cart/products' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <button onClick={() => router.back()} className='mr-4 border rounded w-max px-2 mb-1 bg-slate-200 hover:bg-slate-400 hover:text-white'>Back</button>
+      <p className={location === '/cart/products' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         CART
-      </Link>
+      </p>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/delivery'} className={location === '/cart/delivery' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <p className={location === '/cart/delivery' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         DELIVERY ADDRESS
-      </Link>
+      </p>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/pay'} className={location === '/cart/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <p className={location === '/cart/pay' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         PAY
-      </Link>
+      </p>
       <p>&nbsp;❯&nbsp;</p>
-      <Link href={'/cart/order-info'} className={location === '/cart/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
+      <p className={location === '/cart/order-info' ? 'font-semibold underline text-green-500' : 'font-semibold'}>
         ORDER INFORMATION
-      </Link>
+      </p>
     </div>
   )
 }
