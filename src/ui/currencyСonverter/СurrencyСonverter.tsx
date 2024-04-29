@@ -30,8 +30,9 @@ export const СurrencyСonverter: React.FC = () => {
     <div>
       <p className='block text-sm font-medium text-gray-900 mb-2'>Replenish coins:</p>
       <div className='ml-2'>
-        <div className='mb-6'>
-          <p className='block text-sm font-medium text-gray-900 '>USD balance: {balance.usd} $</p>
+        <div className='h-12'>
+          <p className={`block text-sm font-medium ${(balanceUsd !== null && balanceUsd > balance.usd) ? 'text-red-600' : 'text-gray-900'}`}>USD balance: {balance.usd.toFixed(2)} $</p>
+          <p className={`${(balanceUsd !== null && balanceUsd > balance.usd) ? 'block' : 'hidden'} text-sm font-medium text-red-500 `}>There is not enough USD on the balance sheet.</p>
         </div>
         <div className='flex flex-row content-center h-max'>
           <div className='relative mb-6'>
@@ -63,6 +64,7 @@ export const СurrencyСonverter: React.FC = () => {
           </div>
           <button
             onClick={handleCoinsConvert}
+            disabled={(balanceUsd !== null && balanceUsd < balance.usd) ? false : true}
             type='button'
             className='w-14 h-10 ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
           >

@@ -20,11 +20,11 @@ export const PaymentResult: React.FC = () => {
     <div>
       <div>
         <p className='block text-sm font-medium text-gray-900'>Balance:</p>
-        <p className='block text-sm font-medium text-green-600 ml-1'>{stateInfo.balance.method === 'USD' ? `${stateInfo.balance.usd} $` : `${stateInfo.balance.coins} coins`}</p>
+        <p className='block text-sm font-medium text-green-600 ml-1'>{stateInfo.balance.method === 'USD' ? `${stateInfo.balance.usd.toFixed(2)} $` : `${stateInfo.balance.coins.toFixed(2)} coins`}</p>
       </div>
       <div>
         <p className='block text-sm font-medium text-gray-900'>Total price:</p>
-        <p className='block text-sm font-medium text-green-600 ml-1'>{stateInfo.products.totalPriceCart} $</p>
+        <p className='block text-sm font-medium text-green-600 ml-1'>{stateInfo.products.totalPriceCart.toFixed(2)} $</p>
       </div>
       <div>
         <p className='block text-sm font-medium text-gray-900'>Amount of balance:</p>
