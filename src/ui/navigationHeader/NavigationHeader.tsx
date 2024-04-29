@@ -7,6 +7,12 @@ import React, { useActionState, useEffect } from 'react'
 export const NavigationHeader: React.FC = () => {
   const { setCountToCart, setUsd, setCoins } = useActions()
 
+  const addUsd = () => {
+    const balanceLocal = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : 0
+    localStorage.setItem('balance', JSON.stringify({ usd: Number((balanceLocal.usd + 100).toFixed(2)), coins: balanceLocal.coins }))
+    setUsd(balanceLocal.usd + 100)
+  }
+
   useEffect(() => {
     if(!localStorage.getItem('balance')){
       localStorage.setItem('balance', '{"usd": 1000, "coins": 1000}')
@@ -32,13 +38,10 @@ export const NavigationHeader: React.FC = () => {
         </div>
       </Link>
       <div className='flex flex-row gap-1'>
-        <p className='space-x-0 text-center'>
-          Balance:
-        </p>
         <div className='flex flex-row min-w-24 w-max border border-slate-600 rounded-2xl content-center items-center p-1'>
           <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1'>{balance.usd} $</p>
           <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1 mr-1'>{balance.coins} Coins</p>
-          <button className='h-full text-xs w-max pl-1 pr-1 hover:bg-slate-800 rounded'>+</button>
+          <button onClick={addUsd} className='h-full text-xs w-max pl-1 pr-1 hover:bg-slate-800 rounded'>+</button>
         </div>
       </div>
       <Link href={'/'} className='space-x-0 text-center hover:opacity-70 color-hover-text'>

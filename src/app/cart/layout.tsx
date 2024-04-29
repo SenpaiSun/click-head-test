@@ -1,4 +1,10 @@
 import Cart from "./page"
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Cart',
+  description: 'Cart',
+}
 
 export default function CartLayout({
   children,

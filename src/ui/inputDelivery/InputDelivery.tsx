@@ -1,6 +1,5 @@
 'use client'
 import { useActions } from '@/src/hooks/action'
-import { useAppSelector } from '@/src/hooks/redux'
 import React, { useEffect, useState } from 'react';
 
 export const InputDelivery = ({name}: {name: string}) => {

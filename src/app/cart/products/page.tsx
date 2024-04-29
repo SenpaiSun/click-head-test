@@ -1,6 +1,4 @@
 import { CartItem } from '@/src/components/CartItem/CartItem'
-import { TotalCartInfo } from '@/src/components/TotalCartInfo/TotalCartInfo'
-import Breadcrumbs from '@/src/ui/breadcrumbs/Breadcrumbs'
 
 export default function Products() {
   return (

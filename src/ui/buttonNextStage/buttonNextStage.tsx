@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import { useAppSelector } from '@/src/hooks/redux'
-import { Product } from '@/src/store/types'
 import { useActions } from '@/src/hooks/action'
 
 export const ButtonNextStage = () => {
