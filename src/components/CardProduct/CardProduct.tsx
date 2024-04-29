@@ -24,7 +24,7 @@ export const CardProduct: React.FC = (props) => {
       </div>
       <div className='flex flex-col gap-4 max-w-3xl w-full'>
         <div className='flex flex-col'>
-          <p className='font-bold'>{title}</p>
+          <p className='font-bold text-sm text-black'>{title}</p>
           <div className='flex flex-row gap-2'>
             <div className='w-4 h-4'>
               <Image src={'/star.svg'} width={0} height={0} alt='Rating icon' className='w-auto mt-1' />
@@ -34,10 +34,10 @@ export const CardProduct: React.FC = (props) => {
             <p className='text-slate-400'>{rating.count}</p>
           </div>
         </div>
-        <p className='text-sm max-h-20 line-clamp-3'>{description}</p>
+        <p className='text-sm max-h-20 line-clamp-3 text-sm font-medium text-black'>{description}</p>
       </div>
       <div className='flex flex-col gap-4 w-32 justify-between '>
-        <p className='text-end'>Price: {price} $</p>
+        <p className='text-end font-bold text-black'>Price: {price} $</p>
         <ButtonToCart id={id} title={title} price={price}/>
       </div>
     </div>
