@@ -13,8 +13,8 @@ export const NavigationHeader: React.FC = () => {
     }
     const usd = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]').usd : 0
     const coins = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]').coins : 0
-    setUsd(usd)
-    setCoins(coins)
+    setUsd(Number(usd))
+    setCoins(Number(coins))
     const countProducts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').length : 0
     setCountToCart(countProducts)
   }, [setCoins, setCountToCart, setUsd])
@@ -36,8 +36,8 @@ export const NavigationHeader: React.FC = () => {
           Balance:
         </p>
         <div className='flex flex-row min-w-24 w-max border border-slate-600 rounded-2xl content-center items-center p-1'>
-          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1'>{balance.usd.toFixed(2)} $</p>
-          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1 mr-1'>{balance.coins.toFixed(2)} Coins</p>
+          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1'>{balance.usd} $</p>
+          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1 mr-1'>{balance.coins} Coins</p>
           <button className='h-full text-xs w-max pl-1 pr-1 hover:bg-slate-800 rounded'>+</button>
         </div>
       </div>

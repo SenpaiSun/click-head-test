@@ -13,7 +13,7 @@ export const Delivery: React.FC = () => {
   }
   return (
     <form onSubmit={onSubmit} className='flex h-auto flex-col w-5/6'>
-      <h1 className='text-start text-3xl font-bold m-4'>Delivery information:</h1>
+      <h1 className='text-start text-3xl font-bold m-4 underline underline-offset-3 decoration-8 decoration-green-400 text-gray-700'>Delivery information:</h1>
       <div className='flex h-auto flex-col border border-slate-600 rounded-2xl p-4 w-full min-h-52 gap-4'>
         {delivery.map((item: string, index: number) => (
           <InputDelivery key={index} name={item} />

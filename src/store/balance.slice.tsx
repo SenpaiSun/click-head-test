@@ -13,10 +13,12 @@ export const balanceSlice = createSlice({
   initialState,
   reducers: {
     setUsd: (state, action: PayloadAction<number>) => {
-      state.usd = action.payload
+        state.usd = parseFloat(action.payload.toFixed(2));
     },
     setCoins: (state, action: PayloadAction<number>) => {
-      state.coins = action.payload
+      if (typeof action.payload === 'number') {
+        state.coins = parseFloat(action.payload.toFixed(2));
+      }
     },
     setMethod: (state, action: PayloadAction<'USD' | 'Coins'>) => {
       state.method = action.payload

@@ -16,13 +16,14 @@ export const СurrencyСonverter: React.FC = () => {
   const handleCoinsConvert = () => {
     if (balanceUsd && balanceUsd > 0) {
       const localCoins = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : { usd: 0, coins: 0 }
-      const updateCoins = localCoins.coins + balanceUsd
-      const updateUsd = localCoins.usd - balanceUsd
+      const updateCoins: number = localCoins.coins + balanceUsd
+      const updateUsd: number = localCoins.usd - balanceUsd
       localCoins.usd = updateUsd
       localCoins.coins = updateCoins
       localStorage.setItem('balance', JSON.stringify(localCoins))
-      setUsd(updateUsd)
-      setCoins(updateCoins)
+      console.log(updateCoins, typeof updateCoins, updateUsd, typeof updateUsd)
+      setUsd(Number(updateUsd))
+      setCoins(Number(updateCoins))
     }
   }
 
@@ -72,7 +73,7 @@ export const СurrencyСonverter: React.FC = () => {
           </button>
         </div>
         <div>
-          <p className={`block text-sm font-medium ${balance.coins + (balanceUsd ? balanceUsd : 0) !== balance.coins ? 'text-green-600' : 'text-gray-900'} `}>Coins balance: {balance.coins + (balanceUsd ? balanceUsd : 0)} $</p>
+          <p className={`block text-sm font-medium ${balance.coins + (balanceUsd ? balanceUsd : 0) !== balance.coins ? 'text-green-600' : 'text-gray-900'} `}>Coins balance: {(balance.coins + (balanceUsd ? balanceUsd : 0)).toFixed(2)} $</p>
         </div>
       </div>
     </div>
