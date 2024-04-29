@@ -1,15 +1,18 @@
 'use client'
 import { delivery } from '@/src/constants/constants'
+import { useActions } from '@/src/hooks/action'
 import { useAppSelector } from '@/src/hooks/redux'
 import { InputDelivery } from '@/src/ui/inputDelivery/InputDelivery'
 import React from 'react'
 
 export const Delivery: React.FC = () => {
   const confitmData = useAppSelector((state) => state.user)
+  const {setAdded} = useActions()
   const onSubmit = (e: any) => {
     e.preventDefault()
     localStorage.removeItem('user')
     localStorage.setItem('user', JSON.stringify(confitmData))
+    setAdded(true)
   }
   return (
     <form onSubmit={onSubmit} className='flex h-auto flex-col w-5/6'>

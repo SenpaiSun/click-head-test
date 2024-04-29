@@ -1,12 +1,13 @@
-import {createSlice} from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { Product, ProductsState, User } from "./types";
+import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { Product, ProductsState, User } from './types'
 
 const initialState: User = {
   firstName: '',
   lastName: '',
   address: '',
   phone: '',
+  added: false,
 }
 
 export const userSlice = createSlice({
@@ -24,9 +25,15 @@ export const userSlice = createSlice({
     },
     setPhone: (state, action: PayloadAction<string>) => {
       state.phone = action.payload
-    }
-  }
+    },
+    setAdded: (state, action: PayloadAction<boolean>) => {
+      state.added = action.payload
+    },
+    setClearUser: (state) => {
+      state = initialState
+    },
+  },
 })
 
-export const userActions = userSlice.actions;
+export const userActions = userSlice.actions
 export default userSlice.reducer

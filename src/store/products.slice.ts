@@ -25,6 +25,10 @@ export const productsSlice = createSlice({
     },
     setTotalPriceCart: (state, action: PayloadAction<number>) => {
       state.totalPriceCart = action.payload
+    },
+    setClearCart: (state) => {
+      state.productsCart = []
+      state.totalPriceCart = 0
     }
   }
 })

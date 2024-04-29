@@ -25,6 +25,7 @@ export interface User {
   lastName: string
   address: string
   phone: string
+  added: boolean
 }
 
 export interface Balance {

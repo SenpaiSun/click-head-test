@@ -32,8 +32,8 @@ export const СurrencyСonverter: React.FC = () => {
       <p className='block text-sm font-medium text-gray-900 mb-2'>Replenish coins:</p>
       <div className='ml-2'>
         <div className='h-12'>
-          <p className={`block text-sm font-medium ${(balanceUsd !== null && balanceUsd > balance.usd) ? 'text-red-600' : 'text-gray-900'}`}>USD balance: {balance.usd.toFixed(2)} $</p>
-          <p className={`${(balanceUsd !== null && balanceUsd > balance.usd) ? 'block' : 'hidden'} text-sm font-medium text-red-500 `}>There is not enough USD on the balance sheet.</p>
+          <p className={`block text-sm font-medium ${balanceUsd !== null && balanceUsd > balance.usd ? 'text-red-600' : 'text-gray-900'}`}>USD balance: {balance.usd.toFixed(2)} $</p>
+          <p className={`${balanceUsd !== null && balanceUsd > balance.usd ? 'block' : 'hidden'} text-sm font-medium text-red-500 `}>There is not enough USD on the balance sheet.</p>
         </div>
         <div className='flex flex-row content-center h-max'>
           <div className='relative mb-6'>
@@ -56,7 +56,7 @@ export const СurrencyСonverter: React.FC = () => {
           <div className='w-max h-max text-3xl'>➥</div>
           <div className='relative mb-6'>
             <div className='absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none'>
-              <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-currency-cent' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+              <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-currency-cent' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
                 {' '}
                 <path stroke='none' d='M0 0h24v24H0z' fill='none' /> <path d='M16.007 7.54a5.965 5.965 0 0 0 -4.008 -1.54a5.996 5.996 0 0 0 -5.992 6c0 3.314 2.682 6 5.992 6a5.965 5.965 0 0 0 4.004 -1.536' /> <path d='M12 20v-2' /> <path d='M12 6v-2' />{' '}
               </svg>
@@ -65,10 +65,9 @@ export const СurrencyСonverter: React.FC = () => {
           </div>
           <button
             onClick={handleCoinsConvert}
-            disabled={(balanceUsd !== null && balanceUsd < balance.usd) ? false : true}
+            disabled={balanceUsd !== null && balanceUsd < balance.usd ? false : true}
             type='button'
-            className='w-14 h-10 ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800'
-          >
+            className={`w-14 h-10 ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 disabled:bg-gray-400 hover:disabled:bg-gray-400 disabled:text-gray-300 hover:disabled:text-gray-300 disabled:border-gray-400`}>
             ✓
           </button>
         </div>
