@@ -34,7 +34,6 @@ export const NavigationHeader: React.FC = () => {
   return (
     <nav className='flex space-x-4 w-max'>
       <Link href={'/cart/products'} className='flex flex-row gap-1 space-x-0 text-center hover:opacity-70'>
-        <h1>Cart</h1>
         <CartLogo />
         <div className='flex justify-center items-center w-5 h-5 bg-red-500 rounded-full text-xs'>
           <p className='m-auto'>{countToCartProducts}</p>
