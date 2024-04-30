@@ -7,7 +7,7 @@ export const InputDelivery = ({name}: {name: string}) => {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    const dataUser = JSON.parse(localStorage.getItem('user') || '{}')
+    const dataUser = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('user') || '{}') : {}
     setFirstName(dataUser.firstName)
     setLastName(dataUser.lastName)
     setPhone(dataUser.phone)

@@ -40,7 +40,7 @@ export const CardProduct: React.FC = (props) => {
           <p className='text-xs md:text-sm max-h-20 line-clamp-3 text-sm font-medium text-black'>{description}</p>
         </div>
       </div>
-      <div className='flex flex-col gap-4 w-32 justify-between'>
+      <div className='flex flex-col gap-4 h-full w-32 justify-between'>
         <p className='text-end font-bold text-black'>Price: {price} $</p>
         <ButtonToCart id={id} title={title} price={price} />
       </div>

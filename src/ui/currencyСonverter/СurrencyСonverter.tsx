@@ -14,7 +14,7 @@ export const СurrencyСonverter: React.FC = () => {
   }
 
   const handleCoinsConvert = () => {
-    if (balanceUsd && balanceUsd > 0) {
+    if (balanceUsd && balanceUsd > 0 && typeof window !== 'undefined') {
       const localCoins = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : { usd: 0, coins: 0 }
       const updateCoins: number = localCoins.coins + balanceUsd
       const updateUsd: number = localCoins.usd - balanceUsd

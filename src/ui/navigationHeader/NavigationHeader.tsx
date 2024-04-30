@@ -10,21 +10,25 @@ export const NavigationHeader: React.FC = () => {
   const { setCountToCart, setUsd, setCoins } = useActions()
 
   const addUsd = () => {
-    const balanceLocal = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : 0
-    localStorage.setItem('balance', JSON.stringify({ usd: Number((balanceLocal.usd + 100).toFixed(2)), coins: balanceLocal.coins }))
-    setUsd(balanceLocal.usd + 100)
+    if (typeof window !== 'undefined') {
+      const balanceLocal = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : 0
+      localStorage.setItem('balance', JSON.stringify({ usd: Number((balanceLocal.usd + 100).toFixed(2)), coins: balanceLocal.coins }))
+      setUsd(balanceLocal.usd + 100)
+    }
   }
 
   useEffect(() => {
-    if (!localStorage.getItem('balance')) {
-      localStorage.setItem('balance', '{"usd": 1000, "coins": 1000}')
+    if (typeof window !== 'undefined') {
+      if (!localStorage.getItem('balance')) {
+        localStorage.setItem('balance', '{"usd": 1000, "coins": 1000}')
+      }
+      const usd = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]').usd : 0
+      const coins = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]').coins : 0
+      setUsd(Number(usd))
+      setCoins(Number(coins))
+      const countProducts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').length : 0
+      setCountToCart(countProducts)
     }
-    const usd = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]').usd : 0
-    const coins = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]').coins : 0
-    setUsd(Number(usd))
-    setCoins(Number(coins))
-    const countProducts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').length : 0
-    setCountToCart(countProducts)
   }, [setCoins, setCountToCart, setUsd])
 
   const countToCartProducts = useAppSelector((state) => state.products.countToCart)
@@ -48,10 +52,10 @@ export const NavigationHeader: React.FC = () => {
           </button>
         </div>
       </div>
-        <Link href={'/'} className='flex flex-row gap-1 items-center space-x-0 text-center hover:opacity-70'>
-          <p>Exit</p>
-          <ExitLogo />
-        </Link>
+      <Link href={'/'} className='flex flex-row gap-1 items-center space-x-0 text-center hover:opacity-70'>
+        <p>Exit</p>
+        <ExitLogo />
+      </Link>
     </nav>
   )
 }

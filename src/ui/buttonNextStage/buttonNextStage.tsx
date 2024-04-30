@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
@@ -7,11 +8,11 @@ import { useActions } from '@/src/hooks/action'
 export const ButtonNextStage = () => {
   const router = useRouter()
   const location = usePathname()
-  const {setUsd, setCoins, setClearCart, setClearUser} = useActions()
+  const { setUsd, setCoins, setClearCart, setClearUser } = useActions()
   const balanceInfo = useAppSelector((state) => state.balance)
   const productsInfo = useAppSelector((state) => state.products)
   const userInfo = useAppSelector((state) => state.user)
-  const localData = JSON.parse(localStorage.getItem('user') || '[]')
+  const localData = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('user') || '[]') : null
   const checkSubmit = useAppSelector((state) => state.user.added)
   const [access, setAccess] = React.useState(false)
 
@@ -34,47 +35,49 @@ export const ButtonNextStage = () => {
   }
 
   const checkAccess = () => {
-    switch (location) {
-      case '/cart/products':
-        if (productsInfo.productsCart.length > 0) {
-          setAccess(false)
-          break
-        } else {
-          setAccess(true)
-          break
-        }
-      case '/cart/delivery':
-        if (localStorage.getItem('user') && localStorage.getItem('user') !== '{}') {
-          setAccess(false)
-          break
-        } else {
-          setAccess(true)
-          break
-        }
-      case '/cart/pay':
-        if (balanceInfo.method === 'USD') {
-          if (balanceInfo.usd >= productsInfo.totalPriceCart) {
+    if (typeof window !== 'undefined') {
+      switch (location) {
+        case '/cart/products':
+          if (productsInfo.productsCart.length > 0) {
             setAccess(false)
             break
           } else {
             setAccess(true)
             break
           }
-        } else if (balanceInfo.method === 'Coins') {
-          if (balanceInfo.coins >= productsInfo.totalPriceCart) {
+        case '/cart/delivery':
+          if (localStorage.getItem('user') && localStorage.getItem('user') !== '{}') {
             setAccess(false)
             break
           } else {
             setAccess(true)
             break
           }
-        } else {
-          setAccess(true)
+        case '/cart/pay':
+          if (balanceInfo.method === 'USD') {
+            if (balanceInfo.usd >= productsInfo.totalPriceCart) {
+              setAccess(false)
+              break
+            } else {
+              setAccess(true)
+              break
+            }
+          } else if (balanceInfo.method === 'Coins') {
+            if (balanceInfo.coins >= productsInfo.totalPriceCart) {
+              setAccess(false)
+              break
+            } else {
+              setAccess(true)
+              break
+            }
+          } else {
+            setAccess(true)
+            break
+          }
+        case '/cart/order-info':
+          setAccess(false)
           break
-        }
-      case '/cart/order-info':
-        setAccess(false)
-        break
+      }
     }
   }
 
@@ -83,44 +86,46 @@ export const ButtonNextStage = () => {
   }, [balanceInfo, productsInfo, userInfo, location, localData, checkSubmit])
 
   const onPay = async () => {
-    const payOperation = () => {
-      const balanceLocal = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : 0
-      if (balanceInfo.method === 'USD') {
-        console.log('text 1')
-        if (balanceInfo.usd >= productsInfo.totalPriceCart) {
+    if (typeof window !== 'undefined') {
+      const payOperation = () => {
+        const balanceLocal = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : 0
+        if (balanceInfo.method === 'USD') {
           console.log('text 1')
-          localStorage.setItem('balance', JSON.stringify({ usd: Number((balanceLocal.usd - productsInfo.totalPriceCart).toFixed(2)), coins: balanceLocal.coins }))
-          setUsd(balanceInfo.usd - productsInfo.totalPriceCart)
-        }
-      } else if (balanceInfo.method === 'Coins') {
-        console.log('text 1')
-        if (balanceInfo.coins >= productsInfo.totalPriceCart) {
-          console.log('text 2')
-          localStorage.setItem('balance', JSON.stringify({ usd: balanceLocal.usd, coins: Number((balanceLocal.coins - productsInfo.totalPriceCart).toFixed(2)) }))
-          setCoins(balanceInfo.coins - productsInfo.totalPriceCart)
+          if (balanceInfo.usd >= productsInfo.totalPriceCart) {
+            console.log('text 1')
+            localStorage.setItem('balance', JSON.stringify({ usd: Number((balanceLocal.usd - productsInfo.totalPriceCart).toFixed(2)), coins: balanceLocal.coins }))
+            setUsd(balanceInfo.usd - productsInfo.totalPriceCart)
+          }
+        } else if (balanceInfo.method === 'Coins') {
+          console.log('text 1')
+          if (balanceInfo.coins >= productsInfo.totalPriceCart) {
+            console.log('text 2')
+            localStorage.setItem('balance', JSON.stringify({ usd: balanceLocal.usd, coins: Number((balanceLocal.coins - productsInfo.totalPriceCart).toFixed(2)) }))
+            setCoins(balanceInfo.coins - productsInfo.totalPriceCart)
+          }
         }
       }
-    }
-    await payOperation()
-    const createOrder = () => {
-      const localCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]') : []
-      const localUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') || '[]') : []
-      const localBalance = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : 0
-      const localOrders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders') || '[]') : []
-      const order = {
-        number: localOrders.length + 1,
-        user: localUser,
-        products: localCart,
-        balance: localBalance,
+      await payOperation()
+      const createOrder = () => {
+        const localCart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]') : []
+        const localUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') || '[]') : []
+        const localBalance = localStorage.getItem('balance') ? JSON.parse(localStorage.getItem('balance') || '[]') : 0
+        const localOrders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders') || '[]') : []
+        const order = {
+          number: localOrders.length + 1,
+          user: localUser,
+          products: localCart,
+          balance: localBalance,
+        }
+        localStorage.setItem('orders', JSON.stringify([...localOrders, order]))
+        localStorage.removeItem('cart')
+        localStorage.removeItem('user')
+        setClearCart()
+        setClearUser()
       }
-      localStorage.setItem('orders', JSON.stringify([...localOrders, order]))
-      localStorage.removeItem('cart')
-      localStorage.removeItem('user')
-      setClearCart()
-      setClearUser()
+      await createOrder()
+      router.push('/cart/order-info')
     }
-    await createOrder()
-    router.push('/cart/order-info')
   }
 
   const textButton = () => {

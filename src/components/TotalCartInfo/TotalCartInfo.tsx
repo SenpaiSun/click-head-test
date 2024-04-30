@@ -1,15 +1,17 @@
 'use client'
 import { useAppSelector } from '@/src/hooks/redux'
 import React, { useEffect } from 'react'
-import {ButtonNextStage} from '../../ui/buttonNextStage/ButtonNextStage'
+import { ButtonNextStage } from '@/src/ui/buttonNextStage/ButtonNextStage'
 import { Product } from '@/src/store/types'
 import { useActions } from '@/src/hooks/action'
 
 export const TotalCartInfo = () => {
   const { setTotalPriceCart } = useActions()
   useEffect(() => {
-    const price = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').reduce((acc: number, item: Product) => acc + item.price, 0) : 0
-    setTotalPriceCart(price)
+    if (typeof window !== 'undefined') {
+      const price = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '[]').reduce((acc: number, item: Product) => acc + item.price, 0) : 0
+      setTotalPriceCart(price)
+    }
   }, [setTotalPriceCart])
 
   const totalPrice = useAppSelector((state) => state.products.totalPriceCart)

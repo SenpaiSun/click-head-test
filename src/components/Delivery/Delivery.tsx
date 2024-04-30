@@ -7,12 +7,14 @@ import React from 'react'
 
 export const Delivery: React.FC = () => {
   const confitmData = useAppSelector((state) => state.user)
-  const {setAdded} = useActions()
+  const { setAdded } = useActions()
   const onSubmit = (e: any) => {
     e.preventDefault()
-    localStorage.removeItem('user')
-    localStorage.setItem('user', JSON.stringify(confitmData))
-    setAdded(true)
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('user')
+      localStorage.setItem('user', JSON.stringify(confitmData))
+      setAdded(true)
+    }
   }
   return (
     <form onSubmit={onSubmit} className='flex h-auto flex-col w-full md:w-5/6'>
@@ -21,7 +23,9 @@ export const Delivery: React.FC = () => {
         {delivery.map((item: string, index: number) => (
           <InputDelivery key={index} name={item} />
         ))}
-        <button type='submit' className='border border-green-600 rounded w-24 bg-green-500 text-white hover:bg-green-600 m-auto'>Confirm</button>
+        <button type='submit' className='border border-green-600 rounded w-24 bg-green-500 text-white hover:bg-green-600 m-auto'>
+          Confirm
+        </button>
       </div>
     </form>
   )

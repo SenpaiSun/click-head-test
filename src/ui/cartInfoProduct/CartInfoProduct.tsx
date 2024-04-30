@@ -11,18 +11,20 @@ interface CartInfoProductProps {
 
 export const CartInfoProduct = (props: CartInfoProductProps) => {
   const { id, title, price } = props
-  const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-  const {setProductsCart, setCountToCart} = useActions()
+  const cart = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('cart') || '[]') : []
+  const { setProductsCart, setCountToCart } = useActions()
 
   useEffect(() => {
     setCountToCart(cart.length)
   }, [cart.length, setCountToCart])
 
   const handlerDeleteProduct = () => {
-    const idnexProduct = cart.findIndex((product: ButtonToCartProps) => product.id === id)
-    cart.splice(idnexProduct, 1)
-    localStorage.setItem('cart', JSON.stringify(cart))
-    setProductsCart(cart)
+    if (typeof window !== 'undefined') {
+      const idnexProduct = cart.findIndex((product: ButtonToCartProps) => product.id === id)
+      cart.splice(idnexProduct, 1)
+      localStorage.setItem('cart', JSON.stringify(cart))
+      setProductsCart(cart)
+    }
   }
   return (
     <div className='flex flex-row justify-between content-center gap-2 md:gap-4 border-b p-1'>

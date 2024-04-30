@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export const OrderSuccessfully: React.FC = () => {
-  const localOrders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders') || '[]') : 0
+  const localOrders = typeof window !== 'undefined' && localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders') || '[]') : 0
   const localOrderCurrent = localOrders[localOrders.length - 1]
   console.log(localOrders)
   console.log(localOrderCurrent)

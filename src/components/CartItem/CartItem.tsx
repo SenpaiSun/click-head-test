@@ -15,7 +15,9 @@ export const CartItem: React.FC = () => {
   const dataCart = useAppSelector((state) => state.products)
 
   useEffect(() => {
-    setProductsCart(JSON.parse(localStorage.getItem('cart') || '[]'))
+    if (typeof window !== 'undefined') {
+      setProductsCart(JSON.parse(localStorage.getItem('cart') || '[]'))
+    }
   }, [])
 
   return (
