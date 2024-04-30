@@ -14,7 +14,7 @@ export const OrderSuccessfully: React.FC = () => {
       <p className='text-sm font-bold text-gray-900'>{localOrderCurrent.user.address}</p>
       <p className='text-sm font-medium text-gray-900'>Our courier will contact you at number:</p>
       <p className='text-sm font-bold text-gray-900'>{localOrderCurrent.user.phone}</p>
-      <p className='text-sm font-medium text-gray-700'>You can view the order history by going to the <Link href={'/history'} className='font-bold underline hover:text-gray-500'>History section</Link></p>
+      <p className='text-sm font-medium text-gray-700'>You can view the order history by going to the <Link href={'/'} className='font-bold underline hover:text-gray-500'>History section</Link></p>
     </div>
   )
 }
