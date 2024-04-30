@@ -13,7 +13,7 @@ export const SelectMethodButton: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className='flex flex-col items-center'>
       <label htmlFor='method' className='block mb-2 text-sm font-medium text-gray-900'>
         Select method:
       </label>

@@ -28,15 +28,15 @@ export const СurrencyСonverter: React.FC = () => {
   }
 
   return (
-    <div>
-      <p className='block text-sm font-medium text-gray-900 mb-2'>Replenish coins:</p>
+    <div className='flex flex-col xl:flex-row items-center'>
+      <p className='block text-sm font-medium text-gray-900 mb-2 w-max'>Replenish coins:</p>
       <div className='ml-2'>
-        <div className='h-12'>
-          <p className={`block text-sm font-medium ${balanceUsd !== null && balanceUsd > balance.usd ? 'text-red-600' : 'text-gray-900'}`}>USD balance: {balance.usd.toFixed(2)} $</p>
-          <p className={`${balanceUsd !== null && balanceUsd > balance.usd ? 'block' : 'hidden'} text-sm font-medium text-red-500 `}>There is not enough USD on the balance sheet.</p>
+        <div className='h-12 flex flex-col items-center'>
+          <p className={`block text-sm font-medium ${balanceUsd !== null && balanceUsd > balance.usd ? 'text-red-600' : 'text-gray-900'} w-max`}>USD balance: {balance.usd.toFixed(2)} $</p>
+          <p className={`${balanceUsd !== null && balanceUsd > balance.usd ? 'block' : 'hidden'} text-sm font-medium text-red-500 w-max`}>There is not enough USD on the balance sheet.</p>
         </div>
-        <div className='flex flex-row content-center h-max'>
-          <div className='relative mb-6'>
+        <div className='flex flex-col sm:flex-row content-center items-center sm:items-start h-max'>
+          <div className='relative sm:mb-6'>
             <div className='absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none'>
               <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' className='bi bi-currency-dollar' viewBox='0 0 16 16'>
                 <path d='M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z' />
@@ -65,13 +65,13 @@ export const СurrencyСonverter: React.FC = () => {
           </div>
           <button
             onClick={handleCoinsConvert}
-            disabled={balanceUsd !== null && balanceUsd < balance.usd ? false : true}
+            disabled={balanceUsd !== null && balanceUsd <= balance.usd ? false : true}
             type='button'
             className={`w-14 h-10 ml-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 disabled:bg-gray-400 hover:disabled:bg-gray-400 disabled:text-gray-300 hover:disabled:text-gray-300 disabled:border-gray-400`}>
             ✓
           </button>
         </div>
-        <div>
+        <div className='flex flex-col items-center'>
           <p className={`block text-sm font-medium ${balance.coins + (balanceUsd ? balanceUsd : 0) !== balance.coins ? 'text-green-600' : 'text-gray-900'} `}>Coins balance: {(balance.coins + (balanceUsd ? balanceUsd : 0)).toFixed(2)} $</p>
         </div>
       </div>
