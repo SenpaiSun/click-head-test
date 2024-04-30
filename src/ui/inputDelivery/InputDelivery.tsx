@@ -54,7 +54,7 @@ export const InputDelivery = ({name}: {name: string}) => {
   return (
     <div className='flex flex-col md:flex-row justify-between gap-1'>
       <label htmlFor={name} className='w-max min-w-24 md:m-auto h-max text-sm font-medium text-gray-900'>{name}:</label>
-      <input name={name} id={name} value={inputValue} onChange={onChangeValue} inputMode={name === 'Phone' ? 'numeric' : 'text'} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 pl-2 pr-2 focus:outline-none" required placeholder={name}></input>
+      <input name={name} id={name} value={inputValue} onChange={onChangeValue} type={name === 'Phone' ? 'number' : 'text'} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 pl-2 pr-2 focus:outline-none" required placeholder={name}></input>
     </div>
   )
 }
