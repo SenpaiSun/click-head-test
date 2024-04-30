@@ -37,22 +37,22 @@ export const NavigationHeader: React.FC = () => {
 
   return (
     <nav className='flex space-x-4 w-max'>
-      <Link href={'/cart/products'} className='flex flex-row gap-1 space-x-0 text-center hover:opacity-70'>
+      <Link href={'/cart/products'} className='flex flex-row gap-1 space-x-0 text-center hover:opacity-70 text-white'>
         <CartLogo />
         <div className='flex justify-center items-center w-5 h-5 bg-red-500 rounded-full text-xs'>
           <p className='m-auto'>{countToCartProducts}</p>
         </div>
       </Link>
-      <div className='flex flex-row gap-1'>
+      <div className='flex flex-row gap-1 text-white'>
         <div className='flex flex-row min-w-24 w-max border border-slate-600 rounded-2xl content-center items-center p-1'>
-          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1'>{balance.usd} $</p>
-          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1 mr-1'>{balance.coins} Coins</p>
+          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1 text-white'>{balance.usd} $</p>
+          <p className='h-full text-xs w-max border-r border-slate-600 pl-1 pr-1 mr-1 text-white'>{balance.coins} Coins</p>
           <button onClick={addUsd} className='h-full text-xs w-max pl-1 pr-1 hover:bg-slate-800 rounded'>
             +
           </button>
         </div>
       </div>
-      <Link href={'/'} className='flex flex-row gap-1 items-center space-x-0 text-center hover:opacity-70'>
+      <Link href={'/'} className='flex flex-row gap-1 items-center space-x-0 text-center hover:opacity-70 text-white'>
         <p>Exit</p>
         <ExitLogo />
       </Link>
