@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Инструкция по запуску проекта:
+1. Клонировать репозиторий командой `git clone git@github.com:SenpaiSun/click-head-test.git`
+2. Установить зависимости `npm install`
+3. Запустить проект командой `npm run dev`
 
-## Getting Started
+## Функционал проекта:
+1. Есть возможность пополнить баланс $ для удобства, нажав на `+` справа от валюты.
+   
+   ![image](https://github.com/SenpaiSun/click-head-test/assets/100027896/97da0d69-2bd4-427a-8945-85c5ab99ed38)
 
-First, run the development server:
+2. Есть возможность удалять с корзины товары
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![image](https://github.com/SenpaiSun/click-head-test/assets/100027896/ec5617de-e104-4524-89f2-040decac09fe)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Для перехода к оплате, нужно ввести данные пользователя, нажать `Confirm`, в таком случае откроется доступ к оплате
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![image](https://github.com/SenpaiSun/click-head-test/assets/100027896/9a17588a-f780-46f1-9269-94f229e390f2)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+4. Есть возможность перевести $ в Coins. Если $ не хватает для перевода, то появится соответствующее сообщение.
 
-To learn more about Next.js, take a look at the following resources:
+![image](https://github.com/SenpaiSun/click-head-test/assets/100027896/3dd82853-5143-4040-8ec4-1fa01b9bbc3c)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
