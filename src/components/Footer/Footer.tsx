@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className='flex justify-between m-8'>
+    <footer className='flex justify-between p-8 bg-black'>
       <p className="text-sm font-medium text-gray-300">&copy; 2024</p>
       <ul className='flex flex-col'>
         <li><Link href={'https://clickhead.me/about'} className='text-sm font-medium text-gray-300 hover:text-gray-500'>About Us</Link></li>
